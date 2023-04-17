@@ -3090,6 +3090,10 @@ case-sensitive-paths-webpack-plugin@^2.4.0:
   resolved "https://registry.npmjs.org/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.4.0.tgz"
   integrity sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==
 
+"cell@github:jkroso/cell":
+  version "1.0.2"
+  resolved "git+ssh://git@github.com/jkroso/cell.git#6db4991ebff09e344d7c1211c4abdcc62aff479e"
+
 chalk@^2.0.0, chalk@^2.1.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
@@ -4791,6 +4795,14 @@ flatted@^3.1.0:
   version "3.2.7"
   resolved "https://registry.npmjs.org/flatted/-/flatted-3.2.7.tgz"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
+
+flowtype@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/flowtype/-/flowtype-2.0.0.tgz"
+  integrity sha512-/14ZZloMsh0gV9i0kfeHfcyA2n40dNoUOKb7Npw9V+xVTUaJBfbyQI3usf1vjYBKHazSxeGE3id4KPcUx+y2/Q==
+  dependencies:
+    merge "github:yields/merge"
+    viewport "2"
 
 follow-redirects@^1.0.0, follow-redirects@^1.15.0:
   version "1.15.2"
@@ -6598,6 +6610,10 @@ merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/merge-stream/-/merge-stream-2.0.0.tgz"
   integrity sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==
+
+"merge@github:yields/merge":
+  version "1.0.1"
+  resolved "git+ssh://git@github.com/yields/merge.git#2f357cb501cd06f1a86394b7817e5df73c53f644"
 
 merge2@^1.3.0, merge2@^1.4.1:
   version "1.4.1"
@@ -9446,6 +9462,13 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
+
+viewport@2:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/viewport/-/viewport-2.0.1.tgz"
+  integrity sha512-tXRwDYNbFwKlOyETdVQldQ/Ki0YGTAa/CNWogMyek7Uw+a4UOF8rRCtYm752sEF+7dWT+kHsfBtgWMrSH9ykwg==
+  dependencies:
+    cell "github:jkroso/cell"
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"
