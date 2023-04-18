@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import repeatimg from "../images/repeat.svg";
-import cancelimg from "../images/x.svg";
+import repeatimg from "./images/repeat.svg";
+import cancelimg from "./images/x.svg";
 
 function New() {
   return (

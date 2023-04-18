@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import mock from "../mock.json";
+import mock from "./mock.json";
 import { useState } from "react";
-import filterdeleteimg from "../images/x.svg";
+import filterdeleteimg from "./images/x.svg";
 
 function Home() {
   const [filter, setFilter] = useState();
