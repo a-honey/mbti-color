@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import mock from "./mock.json";
 import { useState } from "react";
 import filterdeleteimg from "./images/x.svg";
+import ColorSurvey from "./components/ColorSurvey";
 
 function Home() {
   const [filter, setFilter] = useState();
@@ -21,7 +22,7 @@ function Home() {
       <ul>
         {mock.map((item) => (
           <li key={item.id} onClick={() => setFilter(item.mbti)}>
-            {item.id} {item.mbti} --- {item.colorCode}
+            <ColorSurvey value={item} onClick={() => setFilter(item.mbti)} />
           </li>
         ))}
       </ul>
