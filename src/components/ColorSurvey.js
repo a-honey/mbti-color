@@ -11,7 +11,7 @@ export default function ColorSurvey({ value, onClick }) {
       </div>
       <div
         className={styles.colorChip}
-        sylte={{ backgroundColor: value.colorCode }}
+        style={{ backgroundColor: value.colorCode }}
       ></div>
       <div className={styles.colorCode}>{value.colorCode}</div>
     </div>
