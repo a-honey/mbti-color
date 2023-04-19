@@ -1,12 +1,25 @@
 import { Link } from "react-router-dom";
-import mock from "./mock.json";
-import { useState } from "react";
+import axios from "./lib/axios";
+import { useState, useEffect } from "react";
 import filterdeleteimg from "./images/x.svg";
 import ColorSurvey from "./components/ColorSurvey";
 import styles from "./Home.module.css";
 
 function Home() {
   const [filter, setFilter] = useState();
+  const [items, setItems] = useState([]);
+
+  async function handleLoad(mbti) {
+    const res = await axios.get("/color-surveys/", {
+      params: { mbti, limit: 20 },
+    });
+    const nextItems = res.data.results;
+    setItems(nextItems);
+  }
+
+  useEffect(() => {
+    handleLoad(filter);
+  }, [filter]);
 
   return (
     <div className={styles.contaner}>
@@ -32,7 +45,7 @@ function Home() {
           + 새 컬러등록하기
         </Link>
         <ul className={styles.items}>
-          {mock.map((item) => (
+          {items.map((item) => (
             <li key={item.id} onClick={() => setFilter(item.mbti)}>
               <ColorSurvey value={item} onClick={() => setFilter(item.mbti)} />
             </li>

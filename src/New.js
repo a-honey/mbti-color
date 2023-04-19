@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MBTIselect from "./components/MBTIselect";
 import repeatimg from "./images/repeat.svg";
 import cancelimg from "./images/x.svg";
@@ -7,12 +7,15 @@ import generateColorCode from "./lib/generateColorCode";
 import ColorInput from "./components/ColorInput";
 import styles from "./New.module.css";
 import Button from "./components/Button";
+import axios from "./lib/axios";
 
 function New() {
   const [formValue, setFormValue] = useState({
-    mbti: "INFP",
+    mbti: "ESTP",
     colorCode: "#000000",
   });
+
+  const navigate = useNavigate();
 
   function handleChange(name, value) {
     setFormValue((prevFormValue) => ({
@@ -26,8 +29,12 @@ function New() {
     handleChange("colorCode", nextColorCode);
   }
 
-  function handleSubmit() {
-    console.log("submit!");
+  async function handleSubmit() {
+    await axios.post("/color-surveys/", {
+      ...formValue,
+      password: "0000",
+    });
+    navigate("/");
   }
 
   return (
