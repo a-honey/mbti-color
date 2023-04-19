@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import axios from "./lib/axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import filterdeleteimg from "./images/x.svg";
 import ColorSurvey from "./components/ColorSurvey";
 import styles from "./Home.module.css";
@@ -8,19 +8,44 @@ import styles from "./Home.module.css";
 function Home() {
   const [filter, setFilter] = useState();
   const [items, setItems] = useState([]);
+  const nextPageRef = useRef(null);
+  const isLoadingRef = useRef(false);
 
   async function handleLoad(mbti) {
     const res = await axios.get("/color-surveys/", {
       params: { mbti, limit: 20 },
     });
     const nextItems = res.data.results;
+    nextPageRef.current = res.data.next;
     setItems(nextItems);
+  }
+
+  async function handleLoadNext() {
+    const res = await axios.get(nextPageRef.current);
+    const data = res.data;
+    setItems((prevItems) => [...prevItems, ...data.results]);
+    nextPageRef.current = data.next;
   }
 
   useEffect(() => {
     handleLoad(filter);
   }, [filter]);
 
+  useEffect(() => {
+    async function handleScroll() {
+      if (!nextPageRef.current || isLoadingRef.current) return;
+      isLoadingRef.current = true;
+      const maxScriollTop =
+        document.documentElement.offsetHeight - window.innerHeight - 100;
+      const currentScrollTop = document.documentElement.scrollTop;
+      if (currentScrollTop >= maxScriollTop) {
+        await handleLoadNext();
+      }
+      isLoadingRef.current = false;
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <div className={styles.contaner}>
       <div className={styles.headerContainer}>
