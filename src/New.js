@@ -4,6 +4,7 @@ import MBTIselect from "./components/MBTIselect";
 import repeatimg from "./images/repeat.svg";
 import cancelimg from "./images/x.svg";
 import generateColorCode from "./lib/generateColorCode";
+import ColorInput from "./components/ColorInput";
 
 function New() {
   const [formValue, setFormValue] = useState({
@@ -23,18 +24,6 @@ function New() {
     handleChange("colorCode", nextColorCode);
   }
 
-  function handleColorCodeBlur() {
-    const isValidColorCode = /^#[a-f0-9]{6}$/i.test(formValue.colorCode); //true
-    if (!isValidColorCode) {
-      handleChange("colorCode", "#000000");
-    }
-  }
-
-  function handleSubmit() {
-    /** @FIXME */
-    console.log(formValue);
-  }
-
   return (
     <div>
       <h1>새 컬러 등록하기</h1>
@@ -43,16 +32,14 @@ function New() {
       </Link>
       <h2>MBTI</h2>
       <MBTIselect
-        value={formValue.Mbti}
+        value={formValue.mbti}
         onChange={(newMbti) => handleChange("mbti", newMbti)}
       />
       <h2>컬러</h2>
       <img src={repeatimg} alt="랜덤" onClick={handleRandomClick} />
-      <input
-        name="colorCode"
+      <ColorInput
         value={formValue.colorCode}
-        onBlur={handleColorCodeBlur}
-        onChange={(e) => handleChange("colorCode", e.target.value)}
+        onChange={(newColorCode) => handleChange("colorCode", newColorCode)}
       />
       <button>컬러등록</button>
     </div>
