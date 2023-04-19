@@ -6,6 +6,7 @@ import cancelimg from "./images/x.svg";
 import generateColorCode from "./lib/generateColorCode";
 import ColorInput from "./components/ColorInput";
 import styles from "./New.module.css";
+import Button from "./components/Button";
 
 function New() {
   const [formValue, setFormValue] = useState({
@@ -56,9 +57,9 @@ function New() {
           onChange={(newColorCode) => handleChange("colorCode", newColorCode)}
         />
       </section>
-      <button className={styles.submit} onClick={handleSubmit}>
+      <Button className={styles.submit} onClick={handleSubmit}>
         컬러등록
-      </button>
+      </Button>
     </div>
   );
 }
