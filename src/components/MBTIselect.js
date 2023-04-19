@@ -1,4 +1,4 @@
-const optionGroup = [
+const optionGroups = [
   [
     { value: "E", label: "외향형" },
     { value: "I", label: "내향형" },
@@ -46,7 +46,7 @@ function MBTIOptionGroup({ options, value, onChange }) {
 
 export default function MBTISelect({ value = "INFP", onChange }) {
   function handleChangeAt(val, position) {
-    const vextValue =
+    const nextValue =
       value.slice(0, position) + val + value.slice(position + 1);
     onChange(nextValue);
   }
